@@ -8,13 +8,13 @@ The CATH hierarchy is a classification system for protein domain structures. It 
    - Mixed Alpha-Beta (significant amount of both α-helices and β-sheets)
    - Few Secondary Structures
 
-2. Architecture (A): This level describes the overall shape and arrangement of secondary structures in three-dimensional space, independent of their connectivity.
+2. Architecture (A): This level describes the overall shape and arrangement of secondary structures in three-dimensional space.
 
 3. Topology/fold (T): At this level, domains are grouped based on the connectivity and arrangement of their secondary structure elements.
 
-4. Homologous superfamily (H): Domains are classified into this level if there is strong evidence of evolutionary relatedness, based on structural, functional, and sequence similarities.
+4. Homologous superfamily (H): Domains are classified into this level if there is strong evidence of evolutionary relatedness. This is based on structural, functional, and sequence similarities.
 
-The CATH database was created in the mid-1990s by Professor Christine Orengo and colleagues at University College London. It uses a combination of automatic methods and manual curation to classify protein domains from experimentally determined structures in the Protein Data Bank. The classification helps in identifying relationships between protein structures and can provide insights into protein evolution and function.
+The CATH database was created in the mid-1990s by Professor Christine Orengo and colleagues at University College London. It uses a combination of automatic methods and manual curation to classify protein domains from experimentally determined structures in the Protein Data Bank. The original goal of this classification was to help in identifying relationships between protein structures. In biology, it is known that stucture informs function. To understand structure can lead to the understanding of protein evolution and function!
  
  ## cath_3class
 
