@@ -1,3 +1,4 @@
 .venv
 mlflow-artifacts/
 mlflow.db
+.DS_Store
