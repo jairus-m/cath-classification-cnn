@@ -16,7 +16,7 @@ each protein (i.e. only a single atom for each amino acid).
 
 # Running Experiments
 
-### 1. Activate the venv
+### 1. Activate the venv (w/ uv)
 - Run `uv venv` to initialize the venv
 - Activate the venv by with the following CLI commands:
     - MacOS: Run `source .venv/bin/activate`
@@ -28,7 +28,7 @@ each protein (i.e. only a single atom for each amino acid).
 - Open your localhost at the specified port to let mlflow track the runs
 
 ### 3. Run the Python module
-- Run `python src/mlflow_experiments.py`
+- Run `python -m src.mlflow_experiments`
 - The three models will be trained, evaluated, and logged
     1. NN - 1 Hidden Layer, 4 Neurons (<30s on my M1 Macbook Pro)
     2. NN - 2 Hidden Layers, 64 Neurons Each (<30s on my M1 Macbook Pro)
