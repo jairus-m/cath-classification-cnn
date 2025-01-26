@@ -1,5 +1,6 @@
 """"
-This code in this file grabs data from 'cath_3class_ca.npz' and runs a baseline NN.
+This code in this file grabs data from 'cath_3class_ca.npz' and returns an easy-to-use interface
+for using the data.
 
 Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-ov-file
 
@@ -35,12 +36,7 @@ all splits are guaranteed to have members from all categories at the level you a
 topology level, the splits are not always entirely of equal size.
 """
 
-import pandas as pd
 import numpy as np
-
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
 
 def get_data(path: str) -> np.lib.npyio.NpzFile:
     """
