@@ -35,6 +35,9 @@ import matplotlib.pyplot as plt
 
 logging.basicConfig(level=logging.INFO)
 
+DATA_PATH = "data/cath_3class_ca.npz"
+IMAGE_PATH = "images/"
+
 def plot_results(history: History, model_name: str):
     """
     Plots model accuracy vs epoch AND model loss vs epoch (for train and validation data).
@@ -66,8 +69,8 @@ def plot_results(history: History, model_name: str):
 
     plt.tight_layout()
 
-    plt.savefig(f"images/{model_name}.png")
-    mlflow.log_artifact(f"images/{model_name}.png")
+    plt.savefig(f"{IMAGE_PATH}{model_name}.png")
+    mlflow.log_artifact(f"{IMAGE_PATH}{model_name}.png")
 
 def preprocess_nn_data(path: str) -> tuple:
     """
@@ -168,7 +171,7 @@ mlflow.set_experiment("PROTEIN_NN_CNN")
 if __name__ == "__main__":
     # nn-specific data pre-processed data
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_nn_data(
-        "data/cath_3class_ca.npz"
+        DATA_PATH
     )
     signature = infer_signature(X_train, y_train)
 
@@ -244,7 +247,7 @@ if __name__ == "__main__":
 
     # cnn-specific data pre-processed data (overwrite nn vars)
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_cnn_data(
-        "data/cath_3class_ca.npz"
+        DATA_PATH
     )
 
     # Experiment 3: CNN
