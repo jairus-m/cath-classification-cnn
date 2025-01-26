@@ -33,10 +33,14 @@ from sklearn.model_selection import train_test_split
 
 import matplotlib.pyplot as plt
 
+from .cath_data import load_protein_data
+
 logging.basicConfig(level=logging.INFO)
 
-DATA_PATH = "data/cath_3class_ca.npz"
+DATA_PATH = "../data/cath_3class_ca.npz"
 IMAGE_PATH = "images/"
+
+PROTEIN_DATA = load_protein_data(DATA_PATH)
 
 def plot_results(history: History, model_name: str):
     """
@@ -72,17 +76,14 @@ def plot_results(history: History, model_name: str):
     plt.savefig(f"{IMAGE_PATH}{model_name}.png")
     mlflow.log_artifact(f"{IMAGE_PATH}{model_name}.png")
 
-def preprocess_nn_data(path: str) -> tuple:
+def preprocess_nn_data(protein_data: dict[np.ndarray]) -> tuple:
     """
     Preprocess the protein data for the neural networks.
     Args:
-        path (str): Path to Numpy Npz protein data
+        protein_data (dict[np.ndarray]): Protein data
     Returns:
         (tuple): X_train, X_val, X_test, y_train, y_val, y_test
     """
-    # download and prep the data
-    protein_data = np.load(path)
-
     X_train_val, X_test, y_train_val, y_test = train_test_split(
         protein_data["positions"], protein_data["labels"], test_size=0.1
     )
@@ -113,19 +114,16 @@ def preprocess_nn_data(path: str) -> tuple:
     return X_train, X_val, X_test, y_train, y_val, y_test
 
 
-def preprocess_cnn_data(path: str) -> tuple:
+def preprocess_cnn_data(protein_data: dict[np.ndarray]) -> tuple:
     """
     Preprocess the protein data for the convolutional neural network.
     The experimental notebook has more details/comments on the intuition
     and reasoning for the model architecture.
     Args:
-        path (str): Path to Numpy Npz protein data
+        protein_data (dict[np.ndarray]): Protein data
     Returns:
         (tuple): X_train, X_val, X_test, y_train, y_val, y_test
     """
-    # download data
-    protein_data = np.load(path)
-
     # add spatial/channel dims
     tensor_positions = tf.convert_to_tensor(protein_data["positions"], dtype=tf.float32)
     tensor_positions = tf.expand_dims(tensor_positions, axis=-1)
@@ -171,7 +169,7 @@ mlflow.set_experiment("PROTEIN_NN_CNN")
 if __name__ == "__main__":
     # nn-specific data pre-processed data
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_nn_data(
-        DATA_PATH
+        PROTEIN_DATA
     )
     signature = infer_signature(X_train, y_train)
 
@@ -247,7 +245,7 @@ if __name__ == "__main__":
 
     # cnn-specific data pre-processed data (overwrite nn vars)
     X_train, X_val, X_test, y_train, y_val, y_test = preprocess_cnn_data(
-        DATA_PATH
+        PROTEIN_DATA
     )
 
     # Experiment 3: CNN

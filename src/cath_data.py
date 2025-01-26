@@ -42,7 +42,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
-def load_data(path: str) -> np.lib.npyio.NpzFile:
+def get_data(path: str) -> np.lib.npyio.NpzFile:
     """
     Loads .npz data.
     Args:
@@ -54,7 +54,7 @@ def load_data(path: str) -> np.lib.npyio.NpzFile:
 
     return data
 
-def load_arrays(data: np.lib.npyio.NpzFile) -> dict[str:np.ndarray]:
+def get_arrays(data: np.lib.npyio.NpzFile) -> dict[str:np.ndarray]:
     """
     Returns each array in the .npz
     file data.
@@ -79,12 +79,15 @@ def load_arrays(data: np.lib.npyio.NpzFile) -> dict[str:np.ndarray]:
 
     return protein_data
 
-if __name__ == '__main__':
-    data = load_data('data/cath_3class_ca.npz')
+def load_protein_data(path: str) -> dict[np.ndarray]:
+    """
+    Returns protein data as a dictionary.
+    Args:
+        path (str): Path to npz file
+    Returns:
+        dict[np.ndarray]
+    """
+    data = get_data('data/cath_3class_ca.npz')
+    protein_data = get_arrays(data)
 
-    print('Npz Data:')
-    print(data)
-
-    protein_data = load_arrays(data)
-
-    print(protein_data['positions'])
+    return protein_data
