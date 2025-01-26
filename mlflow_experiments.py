@@ -2,15 +2,15 @@
 Jairus Martinez
 Date: 1-25-25
 
-This is an mlflow experiment that tracks the results of 3 different models:
+This is a mlflow experiment that tracks the results of 3 different models:
 1. NN - 1 Hidden Layer, 4 Neurons
 2. NN - 2 Hidden Layers, 64 Neurons Each
 3. CNN
 
 I have an experimental Jupyter Notebook with more detail for the CNN implementation, the theory behind its approach,
-and the inuition behind the different architectual choices. That code has extensive comments and markdown on these details.
+and the inuition behind the different architectual choices. That code has extensive comments and markdown.
 
-For this module, the goal was to spin up an mlflow experment for tracking all 3 models, abstract the data pre-processing
+For this module, the goal was to spin up an mlflow experiment for tracking all 3 models, abstract the data pre-processing
 for the two model types (NN/CNN), and then train, evaluate, and log the results in a reproducible way. Therefore the code here
 is straight to the point and streamlines the original EDA/dev training.
 """
@@ -20,9 +20,7 @@ import logging
 import numpy as np
 
 import mlflow
-from mlflow.models import ModelSignature
 from mlflow.models.signature import infer_signature
-from mlflow.types.schema import TensorSpec
 
 from keras.src.callbacks.history import History
 
