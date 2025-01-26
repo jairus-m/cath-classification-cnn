@@ -14,11 +14,13 @@ The CATH hierarchy is a classification system for protein domain structures. It 
 
 4. Homologous superfamily (H): Domains are classified into this level if there is strong evidence of evolutionary relatedness. This is based on structural, functional, and sequence similarities.
 
-The CATH database was created in the mid-1990s by Professor Christine Orengo and colleagues at University College London. It uses a combination of automatic methods and manual curation to classify protein domains from experimentally determined structures in the Protein Data Bank. The original goal of this classification was to help in identifying relationships between protein structures. In biology, it is known that stucture informs function. To understand structure can lead to the understanding of protein evolution and function!
+The CATH database was created in the mid-1990s by Professor Christine Orengo and colleagues at University College London. It uses a combination of automatic methods and manual curation to classify protein domains from experimentally determined structures in the Protein Data Bank. The original goal of this classification was to help in identifying relationships between protein structures. In biology, it is known that stucture informs function. Understanding structure can lead to the understanding of protein evolution and function!
  
  ## cath_3class
 
-For this work, I am focusing on the simplest dataset, `cath_3class.npz`. This dataset plays a significant role in the CATH classification system by focusing on the Class level of the hierarchy. 
+For this work, I am focusing on the simplest dataset, `cath_3class.npz`. This dataset focuses soley on the Class level of the hierarchy. 
+
+Key attributes of this data:
 
 1. Class-level focus: The dataset concentrates on three of the four main classes in CATH: Mainly Alpha, Mainly Beta, and Alpha Beta (no "Few secondary structures" class due to its small size and heterogeneity).
 
@@ -30,17 +32,18 @@ For this work, I am focusing on the simplest dataset, `cath_3class.npz`. This da
 
 # Training Data
 
-The data used for training are the (x,y,z) coordinates of single Carbon-alpha position for each amino acide within each protein. From these (x,y,z), coordiantes, the hope is to be able to predict whether a protein is 'Mainly Alpha', 'Mainly Beta', or 'Alpha-Beta'.
+The data used for training are the (x,y,z) coordinates of single Carbon-alpha positions for each amino acide within a protein. From these (x,y,z), coordiantes, the hope is to be able to predict whether a protein is 'Mainly Alpha', 'Mainly Beta', or 'Alpha-Beta'.
 
 The data itself is of shape (16962, 1202, 3) where:
 - 16962 is the number of proteins in the dataset
-- 1202 is the number of columns (each column representing an atom in the protein)
-  - The max atoms in a single protein in this data is 1202 (therefore, the data itself resembles a sparse matrix of sorts - (x, y, z)'s instead of 1's)
-- 3 is the (x,y, z) coordinate of each atom in the protein
+- 1202 is the number of atoms (each column represents an atom in the protein)
+  - The max number of atoms in a single protein in this data is 1202 (therefore, the data itself resembles a sparse matrix where you have an array of (x, y, z) coordinates instead of 1's and 0 otherwise)
+- 3 is the dimensions of the protein-atom positions
+  - This array has (x, y, z) coordinates of each c-a position of each amino acid in the protein
 
 In more detail, the first protein has shape (1202, 3) with the following values:
 
-```data['positions'].shape````
+```data['positions'][0].shape````
 
 ```bash
 array([[-0.46251011, 14.0216713 , -0.11604881],
@@ -52,7 +55,7 @@ array([[-0.46251011, 14.0216713 , -0.11604881],
        [ 0.        ,  0.        ,  0.        ]])
 ```
 
-Each row in the array above is the (x,y,z) coordinate of a single atom in the protein. This protein has 175 atoms and so the rest of the 1027 rows (1202-175) are arrays with [0, 0, 0] for each coordinate.
+Each row in the array above is the (x,y,z) coordinate of a single c-a position of a single amino acid in the protein. This protein has 175 atom representations and so the rest of the 1027 rows (1202-175) are arrays with [0, 0, 0] for each coordinate.
 
 # Visualizing the Data:
 
@@ -67,7 +70,7 @@ Based of the (x, y, z) coordinates, we can see the general shape of each protein
 ### 3. Alpha-Beta
 ![alpha_beta_16961](https://github.com/user-attachments/assets/264ab5cf-3eb8-4e01-a69a-8f2fcbfe94df)
 
-In this experiment, the goal is to try different Neural Networks/Convolutional Nueral Networks architectures, tune their hyperparameters, and create a model that can better learn the specific relationships/features of the 3D data in order to be able to predict the correct secondary structures.
+In this experiment, the goal is to try different deep learning architectures, tune their hyperparameters, and create a model that can better learn the specific relationships/features of the 3D data in order to correctly predict the secondary structures.
 
 Citations:
 - http://www.pdg.cnb.uam.es/cursos/BioInfo2002/pages/Farmac/CATH/class.html

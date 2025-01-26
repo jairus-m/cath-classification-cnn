@@ -25,9 +25,8 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
     2. NN - 2 Hidden Layers, 64 Neurons Each (<30s on my M1 Macbook Pro)
     3. CNN (25+ minutes on my M1 Macbook Pro)
 
-
 # Modules
-- protein_class_prediction_data.py
-  - Info on protein data set
-- mlflow_experiments.py
-  - Experiment tracking module
+- `cath_data.py`
+  - Interface for downloading/interacting with CATH protein dataset
+- `mlflow_experiments.py`
+  - Experiment tracking 
