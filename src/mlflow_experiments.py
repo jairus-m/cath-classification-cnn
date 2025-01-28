@@ -163,7 +163,7 @@ def preprocess_cnn_data(protein_data: dict[np.ndarray]) -> tuple:
 
     return X_train, X_val, X_test, y_train, y_val, y_test
 
-mlflow.set_tracking_uri("http://localhost:5001")
+mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("PROTEIN_NN_CNN")
 
 if __name__ == "__main__":

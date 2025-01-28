@@ -3,3 +3,5 @@ mlflow-artifacts/
 mlflow.db
 .DS_Store
 *.pyc
+mlartifacts/
+mlruns/

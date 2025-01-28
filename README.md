@@ -15,7 +15,7 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 - Run `uv sync` to download the dependencies
 
 ### 2. Run the mlflow server
-- Run `mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlflow-artifacts --host 0.0.0.0 --port 5001`
+- Run `mlflow ui`
 - Open your localhost at the specified port to let mlflow track the runs
 
 ### 3. Run the Python module
