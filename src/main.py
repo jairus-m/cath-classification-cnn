@@ -20,8 +20,7 @@ import logging
 import mlflow
 from mlflow.models.signature import infer_signature
 
-from .cath_data import load_protein_data
-from .utils import preprocess_nn_data, preprocess_cnn_data
+from .utils import load_protein_data, preprocess_nn_data, preprocess_cnn_data
 from .models import (
     nn_single__1,
     nn_double__2,

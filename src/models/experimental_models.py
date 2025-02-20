@@ -7,7 +7,7 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import EarlyStopping
 
-from .utils import plot_results
+from src.utils import plot_results
 
 IMAGE_PATH = "images/"
 

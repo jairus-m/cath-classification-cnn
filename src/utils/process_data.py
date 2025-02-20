@@ -1,3 +1,9 @@
+""" 
+This is a pre and post processing utility. It contains two functions that preps
+data for a NN and CNN implementation. In addition, also contains 
+a plotting function for results based off the keras History object.
+"""
+
 import logging
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,32 +22,33 @@ def plot_results(history: History, model_name: str, image_path: str):
         model_name (str): Name of the model that will correspond with plot PNG name
         image_path (str): Path to save plot results PNG file
     Returns:
-        None 
+        None
     """
     # training & validation accuracy values
     plt.figure(figsize=(12, 5))
 
     plt.subplot(1, 2, 1)
-    plt.plot(history.history['accuracy'], label='Train Accuracy')
-    plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-    plt.title('Model Accuracy vs Epochs')
-    plt.ylabel('Accuracy')
-    plt.xlabel('Epochs')
-    plt.legend(loc='upper left')
+    plt.plot(history.history["accuracy"], label="Train Accuracy")
+    plt.plot(history.history["val_accuracy"], label="Validation Accuracy")
+    plt.title("Model Accuracy vs Epochs")
+    plt.ylabel("Accuracy")
+    plt.xlabel("Epochs")
+    plt.legend(loc="upper left")
 
     # training & validation loss values
     plt.subplot(1, 2, 2)
-    plt.plot(history.history['loss'], label='Train Loss')
-    plt.plot(history.history['val_loss'], label='Validation Loss')
-    plt.title('Model Loss vs Epochs')
-    plt.ylabel('Loss')
-    plt.xlabel('Epochs')
-    plt.legend(loc='upper left')
+    plt.plot(history.history["loss"], label="Train Loss")
+    plt.plot(history.history["val_loss"], label="Validation Loss")
+    plt.title("Model Loss vs Epochs")
+    plt.ylabel("Loss")
+    plt.xlabel("Epochs")
+    plt.legend(loc="upper left")
 
     plt.tight_layout()
 
     plt.savefig(f"{image_path}{model_name}.png")
     mlflow.log_artifact(f"{image_path}{model_name}.png")
+
 
 def preprocess_nn_data(protein_data: dict[np.ndarray]) -> tuple:
     """
