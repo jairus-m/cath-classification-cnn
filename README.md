@@ -28,7 +28,7 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 
 # Modules
 - `src.models`
-  - Different experimental deep learning models using the mlflow API
+  - Different experimental deep learning models using the keras/mlflow API
 - `src.utils` 
   - Interface for downloading/interacting with CATH protein dataset
   - Utilities for data pre- and post-processing  
