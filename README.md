@@ -23,7 +23,8 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 - The three models will be trained, evaluated, and logged
     1. NN - 1 Hidden Layer, 4 Neurons (<30s on my M1 Macbook Pro)
     2. NN - 2 Hidden Layers, 64 Neurons Each (<30s on my M1 Macbook Pro)
-    3. CNN (25+ minutes on my M1 Macbook Pro)
+    3. CNN (<21min on my M1 Macbook Pro)
+    4. Simplifed CNN w/ Early Stopping (<10min on my M1 Macbook Pro)
 
 # Modules
 - `cath_data.py`
