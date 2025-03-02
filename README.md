@@ -20,14 +20,17 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 
 ### 3. Run the Python module
 - Run `python -m src.main`
-- The three models will be trained, evaluated, and logged
-    1. NN - 1 Hidden Layer, 4 Neurons (<30s on my M1 Macbook Pro)
-    2. NN - 2 Hidden Layers, 64 Neurons Each (<30s on my M1 Macbook Pro)
+- Four models will be trained, evaluated, and logged (training time is based on an M1 Macbook Pro)
+    1. NN - 1 Hidden Layer, 4 Neurons (~6s)
+    2. NN - 2 Hidden Layers, 64 Neurons Each (~10s)
     3. CNN (<21min on my M1 Macbook Pro)
-    4. Simplifed CNN w/ Early Stopping (<10min on my M1 Macbook Pro)
+    4. Simplifed CNN w/ Early Stopping (<10min)
 
 # Modules
-- `cath_data.py`
+- `src.models`
+  - Different experimental deep learning models using the keras/mlflow API
+- `src.utils` 
   - Interface for downloading/interacting with CATH protein dataset
-- `mlflow_experiments.py`
-  - Experiment tracking 
+  - Utilities for data pre- and post-processing  
+- `src.main`
+  - Main entry point for experiment tracking
