@@ -7,6 +7,8 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 
 # Running Experiments
 
+NOTE: A Dockerfile is included to run the entire project within a container. Refer to the Dockerfile for build instructions.
+
 ### 1. Activate the venv (w/ uv)
 - Run `uv venv` to initialize the venv
 - Activate the venv by with the following CLI commands:
