@@ -17,7 +17,6 @@ is straight to the point and streamlines the original EDA/dev training.
 """
 
 import logging
-import mlflow
 from mlflow.models.signature import infer_signature
 
 from .utils import load_protein_data, preprocess_nn_data, preprocess_cnn_data
