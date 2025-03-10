@@ -49,8 +49,8 @@ cath-classification-cnn/
 ├── images/                          # results/plotted proteins/training curves
 ├── dev/
 │   ├── final_model.keras            # final model
-│   └── dev_training.ipynb           # Jupyter notebook for data/model exploration
-├── src/
+│   └── dev_training.ipynb           # jupyter notebook for data/model exploration
+├── src/                             # project source code dir
 │   ├── models/
 │   │   └── experimental_models.py   # Keras NNs/CNNs w/ mlflow API
 │   ├── utils/                       
