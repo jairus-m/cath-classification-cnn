@@ -36,3 +36,28 @@ NOTE: A Dockerfile is included to run the entire project within a container. Ref
   - Utilities for data pre- and post-processing  
 - `src.main`
   - Main entry point for experiment tracking
+ 
+
+# Project Dir Structure
+```bash
+cath-classification-cnn/
+├── data/
+│   ├── project_docs/
+│   │   ├── p_cnn_presentation.pdf   # final presentatino
+│   │   └── p_cnn_doc.pdf            # final write-up
+│   └── cath_3class_ca.npz           # raw CATH data
+├── images/                          # results/plotted proteins/training curves
+├── dev/
+│   ├── final_model.keras            # final model
+│   └── dev_training.ipynb           # jupyter notebook for data/model exploration
+├── src/                             # project source code dir
+│   ├── models/
+│   │   └── experimental_models.py   # Keras NNs/CNNs w/ mlflow API
+│   ├── utils/                       
+│   │   ├── cath_data.py             # util to interact with CATH data
+│   │   └── process_data.py          # util to pre-process data/plot training curves
+│   └── main.py                      # entry point for running experiments
+├── Dockerfile                       # create image/run container for dev env 
+├── pyproject.toml                   # project deps
+└── uv.lock                          # uv lock file for venv management
+```
