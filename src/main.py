@@ -30,7 +30,7 @@ from .models import (
 logging.basicConfig(level=logging.INFO)
 
 DATA_PATH = "../data/cath_3class_ca.npz"
-IMAGE_PATH = "images/"
+IMAGE_PATH = "images/mlflow_results"
 
 PROTEIN_DATA = load_protein_data(DATA_PATH)
 
