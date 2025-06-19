@@ -7,3 +7,4 @@ mlflow.db
 mlartifacts/
 mlruns/
 .early.coverage
+.vscode/
