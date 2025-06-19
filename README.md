@@ -7,7 +7,7 @@ Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-
 
 # Running Experiments
 
-NOTE: A Dockerfile is included to run the entire project within a container. Refer to the Dockerfile for build instructions.
+NOTE: Within `.devcontainer`, a Dockerfile and configuration file is included to run the entire project within a [dev container](https://code.visualstudio.com/docs/devcontainers/containers). 
 
 ### 1. Activate the venv (w/ uv)
 - Run `uv venv` to initialize the venv
@@ -41,6 +41,9 @@ NOTE: A Dockerfile is included to run the entire project within a container. Ref
 # Project Dir Structure
 ```bash
 cath-classification-cnn/
+├── .devcontainer/                   # dev container base image and config
+│   ├── devcontainer.json
+│   └── Dockerfile
 ├── data/
 │   ├── project_docs/
 │   └── cath_3class_ca.npz           # raw CATH data
@@ -54,8 +57,7 @@ cath-classification-cnn/
 │   │   ├── cath_data.py             # util to interact with CATH data
 │   │   └── process_data.py          # util to pre-process data/plot training curves
 │   ├── main.py                      # entry point for running experiments
-│   └── README.md                    # training data docs
-├── Dockerfile                       # create image/run container for dev env 
+│   └── README.md                    # training data docs 
 ├── pyproject.toml                   # project deps
 └── uv.lock                          # uv lock file for venv management
 ```
