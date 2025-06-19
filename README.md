@@ -1,9 +1,11 @@
-# CATH Hierrarchy Data
+# Deep Learning as An Experimental Approach to Predicting Protein Secondary Structures
+
+<img width="1056" alt="Screenshot 2025-03-15 at 9 48 36 AM" src="https://github.com/user-attachments/assets/90ee3340-baa1-4eca-abf3-b8c14f6c9cda" />
+
 Data is sourced from: https://github.com/wouterboomsma/cath_datasets?tab=readme-ov-file
 
 ### cath_3class_ca data:
 - [CATH database context and additional information on training data](https://github.com/jairus-m/cath_classification_cnn/blob/main/src/README.md)
-
 
 # Running Experiments
 
